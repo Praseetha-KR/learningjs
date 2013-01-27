@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>JS Program 1</title>
+        <script type="text/javascript">
+            function fibonacci(x){
+                var prev=0, current=1, next;
+                document.write("Fibonacci Series:")
+                document.write("<br />");
+                document.write(prev)
+                while(current<x){
+                    document.write("&nbsp;");
+                    document.write(current);
+                    next = prev + current;
+                    prev = current;
+                    current = next;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="fibonacci(50)">Display Fibonacci Series</button>
+    </body>
+</html>
