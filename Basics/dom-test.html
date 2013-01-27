@@ -10,5 +10,6 @@
         <h1 id="test2" title="hello">World!</h1>
         <button onmousedown="document.getElementById('test1').style.color='blue'; document.getElementById('test2').style.color='red'" onmouseup="document.getElementById('test1').style.color='red'; document.getElementById('test2').style.color='blue'">css dom</button>
         <button onclick="document.getElementById('test1').title='world!'">html dom</button>
+        <button onclick="var h=document.getElementById('test2'); var n=document.createTextNode(' + Created node'); h.appendChild(n);">node dom</button>
     </body>
 </html>
