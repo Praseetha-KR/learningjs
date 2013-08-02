@@ -5,12 +5,30 @@
     <body>
         <h1 id="test1" title="hello">Hello</h1>
         <h1 id="test2" title="hello">World!</h1>
-        <button onmousedown="document.getElementById('test1').style.color='blue'; document.getElementById('test2').style.color='red'" onmouseup="document.getElementById('test1').style.color='red'; document.getElementById('test2').style.color='blue'">css dom</button>
-        <button onclick="document.getElementById('test1').title='world!'">html dom</button>
-        <button onclick="var h=document.getElementById('test2'); var n=document.createTextNode(' + Created node'); h.appendChild(n);">node dom</button>
+        <button onmousedown="cssdommousedown()" onmouseup="cssdommouseup()">css dom</button>
+        <button onclick="htmldomclick()">html dom</button>
+        <button onclick="nodedomclick()">node dom</button>
 
         <script type="text/javascript">
-            
+            function cssdommousedown(){
+                document.getElementById('test1').style.color='blue'; 
+                document.getElementById('test2').style.color='red';
+            }
+
+            function cssdommouseup(){
+                document.getElementById('test1').style.color='red';
+                document.getElementById('test2').style.color='blue';
+            }
+
+            function htmldomclick(){
+                document.getElementById('test1').title='world!';
+            }
+
+            function nodedomclick(){
+                var h=document.getElementById('test2'); 
+                var n=document.createTextNode(' + Created node'); 
+                h.appendChild(n);
+            }
         </script>
     </body>
 </html>
