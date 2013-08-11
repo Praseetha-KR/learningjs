@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AlarmClock</title>
+	<script type="text/javascript" src="../assets/jquery-min.js"></script>
+	<style>
+		#choice1-sub, #choice2-sub{
+			margin-left: 30px;
+			padding-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<p>What do you want to do?</p>
+	<input type="radio" name="settings" value="choice1">Play sound after X minutes<br />
+	<div id="choice1-sub">
+		<p>How many minutes from now?</p>
+		<input type="text" id="mins">
+		<button id="choice1-submit">OK</button>
+	</div>
+	<input type="radio" name="settings" value="choice2">Play sound at an exact time
+	<div id="choice2-sub">
+		<p>What hour do you want to wake up (0-23)?</p>
+		<input type="text" id="hh">
+		<input type="text" id="mm">
+		<button id="choice2-submit">OK</button>
+	</div>
+
+	<script type="text/javascript">
+	//show-hide settings options
+		$('#choice1-sub').hide();
+		$('#choice2-sub').hide();
+		$("input[name='settings']").on('click', function(){
+			if($(this).val() == "choice1"){
+				$('#choice1-sub').show();
+				$('#choice2-sub').hide();
+			}else if($(this).val() == "choice2"){
+				$('#choice2-sub').show();
+				$('#choice1-sub').hide();
+			}
+		});	
+	//choice 1 calculation
+		$('#choice1-submit').click(function(){
+			var mins = $('#mins').val();
+			var hh_from_now = mins/60;
+			var mm_from_now = mins%60;
+			var cur_time = new Date();
+			var hour = cur_time.getHours();
+			var minute = cur_time.getMinutes();
+			var hh = (hour + hh_from_now);
+			var mm = (minute + mm_from_now);
+			play(hh, mm);
+		});
+	//choice 2 calculation
+		$('#choice2-submit').click(function(){
+			var hh = $('#hh').val();
+			var mm = $('#mm').val();
+			play(hh, mm);
+		});
+
+		function play(){
+			var not_alarmed = 1;
+			while(not_alarmed){
+				var cur_time = new Date();
+				var hour = cur_time.getHours();
+				var minute = cur_time.getMinutes();
+				if( (hour == hh) && (minute == mm)){
+					var song = document.createElement('audio');
+					song.setAttribute('src', 'audio.MP3');
+					song.play();
+					not_alarmed = 0;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
