@@ -12,6 +12,7 @@
 	</style>
 </head>
 <body>
+	<span>hi</span>
 	<p>What do you want to do?</p>
 	<input type="radio" name="settings" value="choice1">Play sound after X minutes<br />
 	<div id="choice1-sub">
@@ -28,6 +29,11 @@
 	</div>
 
 	<script type="text/javascript">
+		$('span').click(function(){
+			var t = new Date();
+			$(this).text(t.getHours()+" : "+t.getMinutes());
+		});
+		
 	//show-hide settings options
 		$('#choice1-sub').hide();
 		$('#choice2-sub').hide();
@@ -40,16 +46,28 @@
 				$('#choice1-sub').hide();
 			}
 		});	
+		var play = function (hh, mm){
+			//alert(hh+" : "+mm);
+			var not_alarmed = 1;
+			
+			var cur_time = new Date();
+			check();
+			function check(){
+				if( (cur_time.getHours() == hh) && (cur_time.getMinutes() == mm)){
+					var song = document.createElement('audio');
+					song.setAttribute('src', 'audio.MP3');
+					song.play();
+					not_alarmed = 0;
+				}
+			}
+		}
+
 	//choice 1 calculation
 		$('#choice1-submit').click(function(){
 			var mins = $('#mins').val();
-			var hh_from_now = mins/60;
-			var mm_from_now = mins%60;
 			var cur_time = new Date();
-			var hour = cur_time.getHours();
-			var minute = cur_time.getMinutes();
-			var hh = (hour + hh_from_now);
-			var mm = (minute + mm_from_now);
+			var hh = (cur_time.getHours() + mins/60);
+			var mm = (cur_time.getMinutes() + mins%60);
 			play(hh, mm);
 		});
 	//choice 2 calculation
@@ -59,20 +77,6 @@
 			play(hh, mm);
 		});
 
-		function play(){
-			var not_alarmed = 1;
-			while(not_alarmed){
-				var cur_time = new Date();
-				var hour = cur_time.getHours();
-				var minute = cur_time.getMinutes();
-				if( (hour == hh) && (minute == mm)){
-					var song = document.createElement('audio');
-					song.setAttribute('src', 'audio.MP3');
-					song.play();
-					not_alarmed = 0;
-				}
-			}
-		}
 	</script>
 </body>
 </html>
