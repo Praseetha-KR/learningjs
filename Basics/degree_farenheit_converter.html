@@ -10,5 +10,23 @@
 		<input type="text" name="deg" id="deg"><sup>0</sup>C<br>
 		<input type="text" name="far" id="far"><sup>0</sup>F
 	</form>
+
+	<script>
+		
+		$('#deg').bind('input', function(){
+			if($('#deg').val() == ''){
+				$('#far').val('');
+			}else{
+				$('#far').val($(this).val()*1.8+32);
+			}
+		});
+		$('#far').bind('input', function(){
+			if($('#far').val() == ''){
+				$('#deg').val('');
+			}else{
+				$('#deg').val(($(this).val()-32)/1.8);
+			}
+		});
+	</script>
 </body>
 </html>
