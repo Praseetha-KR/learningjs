@@ -23,7 +23,7 @@ function landscape(arr) {
 }
 
 function displayLandscape() {
-    console.log(landscape.call(this, [].slice.call(arguments)));
+    console.log(landscape([...arguments]));
 }
 
 displayLandscape(3,4,6,1,1);
