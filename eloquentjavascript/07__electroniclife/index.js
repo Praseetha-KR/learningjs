@@ -1,8 +1,25 @@
+const Jetty = require('jetty');
 const World = require('./world');
 const BouncingCritter = require('./critter');
 const Wall = require('./wall');
 
-const plan = [
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function animateWorld() {
+    const jetty = new Jetty(process.stdout);
+    jetty.clear();
+
+    for (let i = 0; i < 10; i++) {
+        jetty.moveTo([0,0]);
+        world.turn();
+        jetty.text(world.toString());
+        await sleep(500);
+    }
+}
+
+const PLAN = [
     "############################",
     "#      #    #      o      ##",
     "#                          #",
@@ -16,12 +33,5 @@ const plan = [
     "#    #                     #",
     "############################"
 ];
-
-const world = new World(plan, { '#': Wall, 'o': BouncingCritter });
-console.log(world.toString());
-
-for (var i = 0; i < 5; i++) {
-  world.turn();
-  console.log(world.toString());
-}
-// animateWorld(world);
+const world = new World(PLAN, { '#': Wall, 'o': BouncingCritter });
+animateWorld(world);

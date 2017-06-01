@@ -1,0 +1,22 @@
+{
+  "name": "learningjs",
+  "version": "0.0.1",
+  "description": "js playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Praseetha-KR/learningjs.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Praseetha-KR/learningjs/issues"
+  },
+  "homepage": "https://github.com/Praseetha-KR/learningjs#readme",
+  "dependencies": {
+    "jetty": "^0.2.1"
+  }
+}
