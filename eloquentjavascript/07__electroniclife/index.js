@@ -1,6 +1,7 @@
 const Jetty = require('jetty');
 const World = require('./world');
 const BouncingCritter = require('./critter');
+const WallFollower = require('./wallfollower');
 const Wall = require('./wall');
 
 function sleep(ms) {
@@ -22,16 +23,16 @@ async function animateWorld() {
 const PLAN = [
     "############################",
     "#      #    #      o      ##",
-    "#                          #",
+    "#                     ~    #",
     "#          #####           #",
     "##         #   #    ##     #",
-    "###           ##     #     #",
-    "#           ###      #     #",
+    "###~          ##     #    ~#",
+    "#      ~    ###      #     #",
     "#   ####                   #",
     "#   ##       o             #",
     "# o  #         o       ### #",
     "#    #                     #",
     "############################"
 ];
-const world = new World(PLAN, { '#': Wall, 'o': BouncingCritter });
+const world = new World(PLAN, { '#': Wall, 'o': BouncingCritter, '~': WallFollower });
 animateWorld(world);
