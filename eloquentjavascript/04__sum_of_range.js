@@ -1,10 +1,10 @@
 const validateExec = require('./validate');
 
-function range(start, end, step=1) {
+function range(start, end, step = 1) {
     if (!step) step = 1;
-    const mult = (start < end) ? 1 : -1;
+    const mult = start < end ? 1 : -1;
     const total = Math.ceil((end - start) / 1);
-    return Array.from(Array(total), (_, i) =>  start + ((mult * i) * step));
+    return Array.from(Array(total), (_, i) => start + mult * i * step);
 }
 
 function sum(arr) {

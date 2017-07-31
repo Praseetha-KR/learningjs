@@ -1,6 +1,6 @@
 const validateExec = require('./validate');
 
-function fizzbuzz(start, end, step=1) {
+function fizzbuzz(start, end, step = 1) {
     for (let i = start; i <= end; i += step) {
         if (i % 3 == 0 || i % 5 == 0) {
             if (i % 3 === 0 && i % 5 === 0) {

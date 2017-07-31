@@ -5,21 +5,15 @@ class Vector {
     }
 
     plus(v) {
-        return new Vector(
-            this.x + v.x,
-            this.y + v.y
-        );
+        return new Vector(this.x + v.x, this.y + v.y);
     }
 
     minus(v) {
-        return new Vector(
-            this.x - v.x,
-            this.y - v.y
-        );
+        return new Vector(this.x - v.x, this.y - v.y);
     }
 
     get length() {
-        return Math.sqrt(this.x**2 + this.y**2);
+        return Math.sqrt(this.x ** 2 + this.y ** 2);
     }
 }
 

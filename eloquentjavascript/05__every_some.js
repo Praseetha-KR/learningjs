@@ -1,11 +1,10 @@
 function some(arr, predicate) {
-    return !!(arr.filter(v => predicate(v)).length);
+    return !!arr.filter(v => predicate(v)).length;
 }
 
 function every(arr, predicate) {
     return arr.length === arr.filter(v => predicate(v)).length;
 }
-
 
 console.log(every([NaN, NaN, NaN], isNaN));
 console.log(every([NaN, NaN, 4], isNaN));

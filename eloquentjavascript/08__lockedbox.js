@@ -11,7 +11,7 @@ const box = {
         if (this.locked) throw new Error('Locked!');
         return this._content;
     }
-}
+};
 
 function withBoxUnlocked(body) {
     box.unlock();
@@ -28,7 +28,7 @@ try {
     withBoxUnlocked(() => {
         throw new Error('No access rights. Abort!');
     });
-} catch(e) {
+} catch (e) {
     console.log(e);
 } finally {
     console.log(box.locked);

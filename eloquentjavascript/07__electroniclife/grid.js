@@ -8,8 +8,12 @@ class Grid {
     }
 
     isInside(vector) {
-        return vector.x >= 0 && vector.x < this.width &&
-            vector.y >= 0 && vector.y < this.height;
+        return (
+            vector.x >= 0 &&
+            vector.x < this.width &&
+            vector.y >= 0 &&
+            vector.y < this.height
+        );
     }
 
     get(vector) {
@@ -24,7 +28,7 @@ class Grid {
         for (let y = 0; y < this.height; y++) {
             for (let x = 0; x < this.width; x++) {
                 const value = this.space[x + y * this.width];
-                if (value) f.call(context, value, new Vector(x, y))
+                if (value) f.call(context, value, new Vector(x, y));
             }
         }
     }

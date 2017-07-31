@@ -5,12 +5,12 @@ class SmartPlantEater {
     act(view) {
         const space = view.find(' ');
         if (this.energy > 60 && space)
-            return { type: 'reproduce', direction: space }
+            return { type: 'reproduce', direction: space };
         if (this.energy < 50) {
             const plant = view.find('*');
-            if (plant) return { type: 'eat', direction: plant }
+            if (plant) return { type: 'eat', direction: plant };
         }
-        if (space) return { type: 'move', direction: space }
+        if (space) return { type: 'move', direction: space };
     }
 }
 

@@ -1,10 +1,11 @@
 function logFive(seq) {
-    let count = 0, elem;
-    while(count < 5) {
+    let count = 0,
+        elem;
+    while (count < 5) {
         elem = seq.next;
         if (!elem) return;
         console.log(elem);
-        count ++;
+        count++;
     }
 }
 
@@ -25,13 +26,12 @@ class ArraySeq extends Sequence {
 
 class RangeSeq extends Sequence {
     constructor(start, end, step = 1) {
-        const numOfElems = Math.ceil(Math.abs((end - start)) / step);
+        const numOfElems = Math.ceil(Math.abs(end - start) / step);
         const mult = start < end ? 1 : -1;
 
-        super(...Array.from(
-            Array(numOfElems),
-            (_, i) => start + ((mult * i) * step)
-        ));
+        super(
+            ...Array.from(Array(numOfElems), (_, i) => start + mult * i * step)
+        );
     }
 }
 

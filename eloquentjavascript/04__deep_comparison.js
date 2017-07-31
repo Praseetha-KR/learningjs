@@ -9,8 +9,8 @@ function deepEqual(v1, v2) {
     return true;
 }
 
-var obj1 = {here: {is: "an"}, object: 2};
-var obj2 = {here: {is: "an"}, object: 2};
+var obj1 = { here: { is: 'an' }, object: 2 };
+var obj2 = { here: { is: 'an' }, object: 2 };
 
 console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, Object.assign(obj2, { new: 'field' })));

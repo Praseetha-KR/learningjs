@@ -9,10 +9,12 @@ let actionTypes = {
     },
     move(critter, vector, action) {
         const dest = this.checkDestination(action, vector);
-        if (dest === null
-            || critter.energy <= 1
-            || this.grid.get(dest) !== null
-        ) return false;
+        if (
+            dest === null ||
+            critter.energy <= 1 ||
+            this.grid.get(dest) !== null
+        )
+            return false;
         critter.energy -= 1;
         this.grid.set(vector, null);
         this.grid.set(dest, critter);
@@ -29,10 +31,12 @@ let actionTypes = {
     reproduce(critter, vector, action) {
         const baby = elementFromChar(this.legend, critter.originalChar);
         const dest = this.checkDestination(action, vector);
-        if (dest === null
-            || critter.energy <= 2 * baby.energy
-            || this.grid.get(dest) !== null
-        ) return false;
+        if (
+            dest === null ||
+            critter.energy <= 2 * baby.energy ||
+            this.grid.get(dest) !== null
+        )
+            return false;
         this.grid.set(dest, baby);
         return true;
     }
@@ -45,12 +49,13 @@ class LifeLikeWorld extends World {
 
     letAct(critter, vector) {
         const action = critter.act(new View(this, vector));
-        const handled = action
-            && action.type in actionTypes
-            && actionTypes[action.type].call(this, critter, vector, action);
+        const handled =
+            action &&
+            action.type in actionTypes &&
+            actionTypes[action.type].call(this, critter, vector, action);
         if (!handled) {
             critter.energy -= 0.2;
-            if (critter.energy <= 0) this.grid.set(vector, null)
+            if (critter.energy <= 0) this.grid.set(vector, null);
         }
     }
 }

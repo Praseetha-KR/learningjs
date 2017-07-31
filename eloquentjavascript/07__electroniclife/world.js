@@ -13,7 +13,6 @@ class World {
             for (let x = 0; x < line.length; x++) {
                 grid.set(new Vector(x, y), elementFromChar(legend, line[x]));
             }
-
         });
     }
     toString() {

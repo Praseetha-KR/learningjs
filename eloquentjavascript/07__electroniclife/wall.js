@@ -1,7 +1,5 @@
 class Wall {
-    constructor() {
-
-    }
+    constructor() {}
 }
 
 module.exports = Wall;

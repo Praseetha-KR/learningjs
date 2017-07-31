@@ -1,5 +1,5 @@
 function randomElement(arr) {
-    return arr[Math.floor((Math.random() * arr.length))];
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function elementFromChar(legend, ch) {

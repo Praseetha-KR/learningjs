@@ -1,5 +1,5 @@
 function prepend(value, list) {
-    return{
+    return {
         value,
         rest: list
     };
@@ -16,7 +16,7 @@ function arrayToList(arr) {
 }
 
 function listToArray(list) {
-    let arr = []
+    let arr = [];
 
     function ltoa(l) {
         if (!l) return;
@@ -40,7 +40,7 @@ function nth(n, list) {
     return node;
 }
 
-const l = arrayToList([1,2,3,4,5]);
+const l = arrayToList([1, 2, 3, 4, 5]);
 console.log(l);
 console.log(listToArray(l));
 console.log(nth(5, l));

@@ -5,7 +5,7 @@ const MOUNTAINS = require('./data/mountains');
 
 function repeat(str, times) {
     let result = '';
-    for(let i = 0; i < times; i++) {
+    for (let i = 0; i < times; i++) {
         result += str;
     }
     return result;
@@ -17,8 +17,10 @@ class TextCell {
     }
 
     minWidth() {
-        return this.text
-            .reduce((width, line) => Math.max(width, line.length), 0);
+        return this.text.reduce(
+            (width, line) => Math.max(width, line.length),
+            0
+        );
     }
 
     minHeight() {
@@ -49,19 +51,18 @@ class UnderlinedCell {
     }
 
     draw(width, height) {
-        return this.inner.draw(width, height - 1)
-            .concat([repeat("-", width)]);
+        return this.inner.draw(width, height - 1).concat([repeat('-', width)]);
     }
 }
 
 class RTextCell extends TextCell {
     constructor(text) {
-        super(text)
+        super(text);
     }
 
     draw(width, height) {
         let result = [];
-        for(let i = 0; i < height; i++) {
+        for (let i = 0; i < height; i++) {
             const line = this.text[i] || '';
             result.push(repeat(' ', width - line.length) + line);
         }
@@ -103,14 +104,11 @@ function drawTable(rows) {
 
 function dataTable(data) {
     const keys = Object.keys(data[0]);
-    const headers = keys.map(name =>
-        new UnderlinedCell(new TextCell(name))
-    );
+    const headers = keys.map(name => new UnderlinedCell(new TextCell(name)));
     const body = data.map(row => {
         return keys.map(name => {
             const value = row[name];
-            if (typeof value === 'number')
-                return new RTextCell(String(value));
+            if (typeof value === 'number') return new RTextCell(String(value));
             return new TextCell(String(value));
         });
     });
@@ -118,12 +116,6 @@ function dataTable(data) {
 }
 
 console.log(drawTable(dataTable(MOUNTAINS)));
-
-
-
-
-
-
 
 /* ============================================================================
     #Exercise: Another cell
@@ -145,21 +137,14 @@ class StretchCell {
     }
 
     draw(width, height) {
-        return this.inner.draw(width, height - 1)
-            .concat([repeat(' ', width)]);
+        return this.inner.draw(width, height - 1).concat([repeat(' ', width)]);
     }
 }
 
-var sc = new StretchCell(new TextCell("abc"), 1, 2);
+var sc = new StretchCell(new TextCell('abc'), 1, 2);
 console.log(sc.minWidth());
 console.log(sc.minHeight());
 console.log(sc.draw(4, 4));
-
-
-
-
-
-
 
 /* ============================================================================
     #Check for correctness
@@ -169,10 +154,8 @@ function displayChessboard() {
     for (var i = 0; i < 5; i++) {
         var row = [];
         for (var j = 0; j < 5; j++) {
-            if ((j + i) % 2 == 0)
-                row.push(new TextCell("##"));
-            else
-                row.push(new TextCell("  "));
+            if ((j + i) % 2 == 0) row.push(new TextCell('##'));
+            else row.push(new TextCell('  '));
         }
         rows.push(row);
     }

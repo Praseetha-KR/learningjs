@@ -8,7 +8,7 @@ function landscape(arr) {
         }
     }
     function mountain(size) {
-        terrain += '\/';
+        terrain += '/';
         for (let i = 0; i < size; i++) {
             terrain += '^';
         }
@@ -16,7 +16,7 @@ function landscape(arr) {
     }
 
     arr.forEach((v, i) => {
-        return (i % 2 === 0) ? flat(v) : mountain(v);
+        return i % 2 === 0 ? flat(v) : mountain(v);
     });
 
     return terrain;
@@ -26,4 +26,4 @@ function displayLandscape() {
     console.log(landscape([...arguments]));
 }
 
-displayLandscape(3,4,6,1,1);
+displayLandscape(3, 4, 6, 1, 1);

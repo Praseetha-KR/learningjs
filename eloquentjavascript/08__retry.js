@@ -13,10 +13,10 @@ function primitiveMultiply(a, b) {
 }
 
 function reliableMutiply(a, b) {
-    while(true) {
+    while (true) {
         try {
             return primitiveMultiply(a, b);
-        } catch(e) {
+        } catch (e) {
             if (e instanceof MultiplicatorUnitFailure) console.log(e.name);
             else throw e;
         }

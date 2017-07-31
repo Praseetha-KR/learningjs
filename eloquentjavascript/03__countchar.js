@@ -9,9 +9,4 @@ function displayCountChar(str, char) {
     console.log(countChar(str, char));
 }
 
-validateExec.call(
-    null,
-    displayCountChar,
-    process.argv[2],
-    process.argv[3]
-);
+validateExec.call(null, displayCountChar, process.argv[2], process.argv[3]);
